@@ -9,6 +9,13 @@ import java.util.regex.Pattern;
 public class JavaLibrary {
     private static final Scanner scanner = new Scanner(System.in);
 
+    public static void main(String[] args) {
+        System.out.print("Test: ");
+        int i = readOptionInt();
+
+        System.out.print(i);
+    }
+
     /**
      * Reads user input and checks if the input is in the given array of choices.
      * @param possibleChoices array of possible choices
@@ -83,17 +90,14 @@ public class JavaLibrary {
      * @return the user input
      */
     public static int readOptionInt() {
-        boolean isValid = false;
         int result = -1;
 
-        while (!isValid) {
-            try {
+        while (scanner.hasNext()) {
+            if (scanner.hasNextInt()) {
                 result = scanner.nextInt();
-
-                if ((float)result%1 == 0) {
-                    isValid = true;
-                }
-            } catch (InputMismatchException e) {
+                break;
+            } else {
+                scanner.next();
                 System.err.println("Invalid Input! Not a number.");
                 System.out.print("Try again: ");
             }
