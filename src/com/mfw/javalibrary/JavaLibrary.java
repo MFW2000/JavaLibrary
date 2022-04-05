@@ -1,18 +1,20 @@
 package com.mfw.javalibrary;
 
-import com.mfw.javalibrary.model.Input;
-
 import java.io.IOException;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-@SuppressWarnings("unused")
-public class JavaLibrary implements Input {
-    private final Scanner scanner = new Scanner(System.in);
+@SuppressWarnings({"unused", "UnusedReturnValue"})
+public class JavaLibrary {
+    private static final Scanner scanner = new Scanner(System.in);
 
-    @Override
-    public String readOptionString(String[] possibleChoices) {
+    /**
+     * Reads user input and checks if the input is in the given array of choices.
+     * @param possibleChoices array of possible choices
+     * @return the user input
+     */
+    public static String readOptionString(String[] possibleChoices) {
         boolean isValid = false;
         String result = "";
 
@@ -30,8 +32,12 @@ public class JavaLibrary implements Input {
         return result;
     }
 
-    @Override
-    public String readOptionString(String regex) {
+    /**
+     * Reads user input and checks if the input matches the given regex.
+     * @param regex defines what is allowed as input
+     * @return the user input
+     */
+    public static String readOptionString(String regex) {
         boolean isValid = false;
         String result = "";
 
@@ -49,8 +55,12 @@ public class JavaLibrary implements Input {
         return result;
     }
 
-    @Override
-    public int readOptionInt(Integer[] possibleChoices) {
+    /**
+     * Reads user input and checks if the input is in the given array of choices.
+     * @param possibleChoices array of possible choices
+     * @return the user input
+     */
+    public static int readOptionInt(Integer[] possibleChoices) {
         boolean isValid = false;
         int result = -1;
 
@@ -68,8 +78,11 @@ public class JavaLibrary implements Input {
         return result;
     }
 
-    @Override
-    public int readOptionInt() {
+    /**
+     * Reads user input and checks if the input is valid.
+     * @return the user input
+     */
+    public static int readOptionInt() {
         boolean isValid = false;
         int result = -1;
 
