@@ -9,13 +9,6 @@ import java.util.regex.Pattern;
 public class JavaLibrary {
     private static final Scanner scanner = new Scanner(System.in);
 
-    public static void main(String[] args) {
-        System.out.print("Test: ");
-        int i = readOptionInt();
-
-        System.out.print(i);
-    }
-
     /**
      * Reads user input and checks if the input is in the given array of choices.
      * @param possibleChoices array of possible choices
@@ -72,10 +65,10 @@ public class JavaLibrary {
         int result = -1;
 
         while (!isValid) {
-            readOptionInt();
+            result = readOptionInt();
 
             if (!Arrays.asList(possibleChoices).contains(result)) {
-                System.err.println("Invalid input!");
+                System.err.println("Invalid input! Not in a valid choice.");
                 System.out.print("Try again: ");
             } else {
                 isValid = true;
@@ -114,11 +107,13 @@ public class JavaLibrary {
             if (System.getProperty("os.name").contains("Windows")) {
                 new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
             } else {
-                Runtime.getRuntime().exec("clear");
+                System.out.print("\\033[H\\033[2J");
             }
         } catch (InterruptedException | IOException e) {
             e.printStackTrace();
         }
+
+        System.out.flush();
     }
 
     /**
