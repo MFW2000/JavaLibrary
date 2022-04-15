@@ -7,15 +7,6 @@ import java.util.regex.Pattern;
 
 @SuppressWarnings({"unused", "UnusedReturnValue"})
 public class JavaLibrary {
-    private static final Scanner scanner = new Scanner(System.in);
-
-    public static void main(String[] args) {
-        System.out.print("Test: ");
-        int i = readOptionInt();
-
-        System.out.print(i);
-    }
-
     /**
      * Reads user input and checks if the input is in the given array of choices.
      * @param possibleChoices array of possible choices
@@ -26,7 +17,7 @@ public class JavaLibrary {
         String result = "";
 
         while (!isValid) {
-            result = scanner.nextLine();
+            result = readString();
 
             if (!Arrays.asList(possibleChoices).contains(result.toLowerCase())) {
                 System.err.println("Invalid input!");
@@ -49,7 +40,7 @@ public class JavaLibrary {
         String result = "";
 
         while (!isValid) {
-            result = scanner.nextLine();
+            result = readString();
 
             if (isInvalidString(regex, result)) {
                 System.err.println("Invalid input! Input does not match the allowed ruleset.");
@@ -72,10 +63,10 @@ public class JavaLibrary {
         int result = -1;
 
         while (!isValid) {
-            readOptionInt();
+            result = readInt();
 
             if (!Arrays.asList(possibleChoices).contains(result)) {
-                System.err.println("Invalid input!");
+                System.err.println("Invalid input! Not in a valid choice.");
                 System.out.print("Try again: ");
             } else {
                 isValid = true;
@@ -86,10 +77,20 @@ public class JavaLibrary {
     }
 
     /**
-     * Reads user input and checks if the input is valid.
+     * Reads user input as String.
      * @return the user input
      */
-    public static int readOptionInt() {
+    public static String readString() {
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextLine();
+    }
+
+    /**
+     * Reads user input as int.
+     * @return the user input
+     */
+    public static int readInt() {
+        Scanner scanner = new Scanner(System.in);
         int result = -1;
 
         while (scanner.hasNext()) {
@@ -107,22 +108,24 @@ public class JavaLibrary {
     }
 
     /**
-     * Clears run console
+     * Clears run console.
      */
     public static void clearConsole() {
         try {
             if (System.getProperty("os.name").contains("Windows")) {
                 new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
             } else {
-                Runtime.getRuntime().exec("clear");
+                System.out.print("\\033[H\\033[2J");
             }
         } catch (InterruptedException | IOException e) {
             e.printStackTrace();
         }
+
+        System.out.flush();
     }
 
     /**
-     * Pauses run console
+     * Pauses run console.
      */
     public static void pauseConsole() {
         Scanner scanner = new Scanner(System.in);
