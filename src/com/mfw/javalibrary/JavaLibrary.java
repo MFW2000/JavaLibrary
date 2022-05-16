@@ -7,13 +7,6 @@ import java.util.regex.Pattern;
 
 @SuppressWarnings({"unused", "UnusedReturnValue"})
 public class JavaLibrary {
-    public static void main(String[] args) {
-        String test = "   dfsad   fsdkf    ";
-        test = trimInvalidWhitespaces(test);
-
-        System.out.println(test + ".");
-    }
-
     /**
      * Reads user input and checks if the input is in the given array of choices.
      * @param possibleChoices array of possible choices
