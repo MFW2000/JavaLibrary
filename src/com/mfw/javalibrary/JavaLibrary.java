@@ -77,12 +77,29 @@ public class JavaLibrary {
     }
 
     /**
+     * Reads user input that allows white spaces.
+     * @return the user input
+     */
+    public static String readEnter() {
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextLine();
+    }
+
+    /**
      * Reads user input as String.
      * @return the user input
      */
     public static String readString() {
         Scanner scanner = new Scanner(System.in);
-        return scanner.nextLine();
+        String result = scanner.nextLine();
+
+        while (isNullOrWhitespace(result)) {
+            System.out.println("Invalid input, may not be empty.");
+            System.out.print("Try again: ");
+            result = scanner.nextLine();
+        }
+
+        return result;
     }
 
     /**
@@ -132,6 +149,26 @@ public class JavaLibrary {
         scanner.nextLine();
     }
 
+    /**
+     * Check if the given string is null, empty or contains whitespace.
+     * @param string string to check
+     * @return true if string matches check
+     */
+    public static boolean isNullOrWhitespace(String string) {
+        return string == null || string.length() == 0 || isWhiteSpace(string);
+    }
+
+    /**
+     * Trims invalid whitespaces from the given string.
+     * Invalid whitespaces are whitespaces before characters, space after characters
+     * and multiple spaces throughout the string.
+     * @param string string to trim
+     * @return the trimmed string
+     */
+    public static String trimInvalidWhitespaces(String string) {
+        return string.trim().replaceAll(" +", " ");
+    }
+
     private static boolean isInvalidString(String regex, String string) {
         Pattern pattern = Pattern.compile(regex);
 
@@ -142,5 +179,21 @@ public class JavaLibrary {
         Matcher matcher = pattern.matcher(string);
 
         return !matcher.matches();
+    }
+
+    private static boolean isWhiteSpace(String string) {
+        int length = string.length();
+
+        if (length > 0) {
+            for (int i = 0; i < length; i++) {
+                if (!Character.isWhitespace(string.charAt(i))) {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        return false;
     }
 }
