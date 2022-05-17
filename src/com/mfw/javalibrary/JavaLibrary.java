@@ -150,15 +150,6 @@ public class JavaLibrary {
     }
 
     /**
-     * Check if the given string is null, empty or contains whitespace.
-     * @param string string to check
-     * @return true if string matches check
-     */
-    public static boolean isNullOrWhitespace(String string) {
-        return string == null || string.length() == 0 || isWhiteSpace(string);
-    }
-
-    /**
      * Trims invalid whitespaces from the given string.
      * Invalid whitespaces are whitespaces before characters, space after characters
      * and multiple spaces throughout the string.
@@ -179,6 +170,10 @@ public class JavaLibrary {
         Matcher matcher = pattern.matcher(string);
 
         return !matcher.matches();
+    }
+
+    private static boolean isNullOrWhitespace(String string) {
+        return string == null || string.length() == 0 || isWhiteSpace(string);
     }
 
     private static boolean isWhiteSpace(String string) {
