@@ -94,7 +94,7 @@ public class JavaLibrary {
         String result = scanner.nextLine();
 
         while (isNullOrWhitespace(result)) {
-            System.out.println("Invalid input, may not be empty.");
+            System.err.println("Invalid input, may not be empty.");
             System.out.print("Try again: ");
             result = scanner.nextLine();
         }
