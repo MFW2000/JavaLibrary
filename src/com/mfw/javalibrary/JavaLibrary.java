@@ -20,7 +20,7 @@ public class JavaLibrary {
             result = readString();
 
             if (!Arrays.asList(possibleChoices).contains(result.toLowerCase())) {
-                System.err.println("Invalid input!");
+                System.err.println("Invalid input, not in a valid choice.");
                 System.out.print("Try again: ");
             } else {
                 isValid = true;
@@ -43,7 +43,7 @@ public class JavaLibrary {
             result = readString();
 
             if (isInvalidString(regex, result)) {
-                System.err.println("Invalid input! Input does not match the allowed ruleset.");
+                System.err.println("Invalid input, does not match the allowed ruleset.");
                 System.out.print("Try again: ");
             } else {
                 isValid = true;
@@ -66,7 +66,7 @@ public class JavaLibrary {
             result = readInt();
 
             if (!Arrays.asList(possibleChoices).contains(result)) {
-                System.err.println("Invalid input! Not in a valid choice.");
+                System.err.println("Invalid input, not in a valid choice.");
                 System.out.print("Try again: ");
             } else {
                 isValid = true;
@@ -116,7 +116,7 @@ public class JavaLibrary {
                 break;
             } else {
                 scanner.next();
-                System.err.println("Invalid Input! Not a number.");
+                System.err.println("Invalid input, not a number.");
                 System.out.print("Try again: ");
             }
         }
