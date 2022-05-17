@@ -3,6 +3,8 @@ package com.mfw.javalibrary;
 import java.util.Random;
 
 public class Helpers {
+    // TODO: Add Javadoc
+
     /**
      * Trims invalid whitespaces from the given string.
      * Invalid whitespaces are whitespaces before characters, space after characters

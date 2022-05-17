@@ -6,6 +6,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class IO {
+    // TODO: Add readDouble()
+    //  Look into readKey type methods
+
     /**
      * Reads user input as string.
      * @return the user input
