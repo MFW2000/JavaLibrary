@@ -3,8 +3,6 @@ package com.mfw.javalibrary;
 import java.util.Random;
 
 public class Helpers {
-    // TODO: Add Javadoc
-
     /**
      * Trims invalid whitespaces from the given string.
      * Invalid whitespaces are whitespaces before characters, space after characters
@@ -16,21 +14,43 @@ public class Helpers {
         return string.trim().replaceAll(" +", " ");
     }
 
+    /**
+     * Generates random int from 0 to the maximum value.
+     * @param max maximum value
+     * @return generated int
+     */
     public static int generateRandomInt(int max) {
         Random random = new Random();
-        return random.nextInt(max);
+        return random.nextInt(max + 1);
     }
 
+    /**
+     * Generates random int from the minimum value to the maximum value.
+     * @param min minimum value
+     * @param max maximum value
+     * @return generated int
+     */
     public static int generateRandomInt(int min, int max) {
         Random random = new Random();
-        return random.nextInt(min, max);
+        return random.nextInt(min, max + 1);
     }
 
+    /**
+     * Generates random double from 0 to the maximum value.
+     * @param max maximum value
+     * @return generated double
+     */
     public static double generateRandomDouble(double max) {
         Random random = new Random();
         return random.nextDouble(max);
     }
 
+    /**
+     * Generates random double from the minimum value to the maximum value.
+     * @param min minimum value
+     * @param max maximum value
+     * @return generated double
+     */
     public static double generateRandomDouble(double min, double max) {
         Random random = new Random();
         return random.nextDouble(min, max);

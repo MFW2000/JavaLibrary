@@ -6,9 +6,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class IO {
-    // TODO: Add readDouble()
-    //  Look into readKey type methods
-
     /**
      * Reads user input as string.
      * @return the user input
@@ -138,17 +135,14 @@ public class IO {
 
     /**
      * Reads user input as int and checks if the input contains an allowed negative value.
-     * @param negativeValues flag to allow negative values
+     * @param allowNegativeValues flag to allow negative values
      * @return the user input
      */
-    public static int readInt(boolean negativeValues) {
+    public static int readInt(boolean allowNegativeValues) {
         while (true) {
             int result = readInt();
 
-            if (!negativeValues && result < 0) {
-                System.err.println("Invalid input, negative values are not allowed.");
-                System.out.print("Try again: ");
-            } else {
+            if (notNegativeValue(allowNegativeValues, result)) {
                 return result;
             }
         }
@@ -169,6 +163,50 @@ public class IO {
                 System.err.println("Invalid input, does not match any known option.");
                 System.out.print("Try again: ");
             }
+        }
+    }
+
+    /**
+     * Reads user input as double.
+     * @return the user input
+     */
+    public static double readDouble() {
+        Scanner scanner = new Scanner(System.in);
+
+        while (true) {
+            if (scanner.hasNextDouble()) {
+                return scanner.nextDouble();
+            } else {
+                System.err.println("Invalid input, not a number.");
+                System.out.print("Try again: ");
+                scanner.next();
+            }
+        }
+    }
+
+    /**
+     * Reads user input as double and checks if the input contains an allowed negative value.
+     * @param allowNegativeValues flag to allow negative values
+     * @return the user input
+     */
+    public static double readDouble(boolean allowNegativeValues) {
+        while (true) {
+            double result = readDouble();
+
+            if (notNegativeValue(allowNegativeValues, result)) {
+                return result;
+            }
+        }
+    }
+
+    private static boolean notNegativeValue(boolean allowNegativeFlag, double value) {
+        if (!allowNegativeFlag && value < 0) {
+            System.err.println("Invalid input, negative values are not allowed.");
+            System.out.print("Try again: ");
+
+            return false;
+        } else {
+            return true;
         }
     }
 
